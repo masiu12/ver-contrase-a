@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registro de Usuario </title>
+    <script>
+      // Función para alternar la visibilidad de la contraseña
+      function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+        } else {
+          passwordInput.type = "password";
+        }
+      }
+
+      // Función para validar los datos al enviar el formulario
+      function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Regex de ejemplo: Contraseña de 4 a 8 caracteres alfanuméricos
+        var regexPassword = /^[a-zA-Z0-9]{4,8}$/;
+
+    
+        if (regexPassword.test(password)) {
+          alert("Registro exitoso. Usuario: " + username);
+          return true; // Permite el envío del formulario (aquí se simula el éxito)
+        } else {
+          alert("La contraseña no cumple con los requisitos (4-8 caracteres alfanuméricos).");
+          return false; // Evita el envío del formulario
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Registro de Usuario Simplificado</h1>
+    <form onsubmit="return validateForm()">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username" required />
+      <br />
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required />
+      <button type="button" onclick="togglePasswordVisibility()">
+        Ver/Ocultar
+      </button>
+      <br />
+      
+      <input
+        type="submit"
+        value="Registrarse"
+      />
+    </form>
+  </body>
+</html>
